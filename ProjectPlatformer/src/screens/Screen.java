@@ -1,74 +1,42 @@
 package screens;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 import javax.swing.JComponent;
 
-public class Screen extends JComponent implements KeyListener, ActionListener,
-		MouseListener, MouseMotionListener {
+import system.Config;
+import system.MainOperator;
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
+@SuppressWarnings("serial")
+public abstract class Screen extends JComponent {
+
+	public abstract String getName();
+
+	protected boolean isActive;
+	protected Graphics g;
+
+	public void init() {
+		MainOperator.window.add(this);
+		addListeners();
+		g = getGraphics();
+		setSize(Config.WINDOW_SIZE);
+		setVisible(false);
 	}
 
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-	}
+	public abstract void addListeners();
 
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-	}
+	public abstract void updateDraw();
 
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-	}
+	public abstract void updateLogic();
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+	public abstract void handleMousePressedInput(MouseEvent e);
 
-	}
+	public abstract void handleMouseReleased(KeyEvent e);
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+	public abstract void handleKeyPressedInput(KeyEvent e);
 
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public abstract void handleKeyReleasedInput(KeyEvent e);
 
 }

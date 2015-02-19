@@ -4,10 +4,10 @@ import java.awt.Dimension;
 
 public final class Config {
 
-	// Game Meta
-	public static final String GAME_NAME = "Project Platformer";
+	public static final String WINDOW_TITLE = "Project Platformer";
 
-	// Window Options
 	public static final Dimension WINDOW_SIZE = new Dimension(500, 500);
+
+	public static final double PLAYER_ADJUST_Y = 100;
 
 }
